@@ -1,4 +1,4 @@
-function calculateChange(total, cashGiven) {
+var calculateChange = function (total, cashGiven) {
   var change = {
 
   };
