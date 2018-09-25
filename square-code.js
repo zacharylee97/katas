@@ -1,7 +1,6 @@
 var squareCode = function(message) {
   var letters = message.split("");
   var square = "";
-  //Maximum square of 9x9 (81 characters)
 
   //Determine size of square/rectangle from letters
   var rows = Math.round(Math.sqrt(letters.length));
@@ -10,22 +9,32 @@ var squareCode = function(message) {
     columns += 1;
   }
 
-var result = "";
-var counter = 0;
-var rowCounter = 0;
+  var counter = 0;
+  var rowCounter = 0;
   while (rowCounter < rows && counter !== letters.length) {
     var columnCounter = 0;
     while (columnCounter < columns && counter !== letters.length) {
-      result += letters[counter];
+      square += letters[counter];
       counter++;
       columnCounter++;
     }
-    if (counter != letters.length - 1) {
-      result += '\n';
+    if (counter < letters.length - 1) {
+      square += '\n';
     }
     rowCounter++;
   }
-  return result;
+
+  var result = square.split("\n");
+  var output = "";
+  for (var i = 0; i < result[0].length; i++) {
+    for (var j = 0; j < result.length; j++)
+      if (result[j].charAt(i)) {
+        output += result[j].charAt(i);
+      }
+    output += " "
+  }
+
+  return output;
 }
 
 console.log(squareCode("haveaniceday"));
